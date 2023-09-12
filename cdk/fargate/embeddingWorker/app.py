@@ -12,6 +12,10 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings.base import Embeddings
 from pydantic import BaseModel
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 class SMEndpointEmbeddings(BaseModel, Embeddings):
     endpoint_name: str
         

@@ -2,7 +2,8 @@ FROM public.ecr.aws/lts/ubuntu:20.04
 
 RUN apt-get update
 RUN apt-get -y install python3-pip
-RUN pip3 install Flask Flask-Cors boto3 langchain transformers chromadb cohere-sagemaker numpy
+COPY requirements.txt /app/requirements.txt
+RUN pip3 install -r /app/requirements.txt
 
 COPY ./* ./app/
 WORKDIR /app/
